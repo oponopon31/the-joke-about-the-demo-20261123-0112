@@ -17,9 +17,10 @@ def main():
     path = os.path.join(out_dir, "entry.txt")
     with open(path, "w", encoding="utf-8") as f:
         f.write(JOKE)
-    # Gate: 1-280 Unicode code points, not only whitespace.
+    # Gate: 1-280 Unicode code points, not only whitespace, one line.
     assert 1 <= len(JOKE) <= 280, f"joke length {len(JOKE)} out of range"
     assert JOKE.strip(), "joke is only whitespace"
+    assert "\n" not in JOKE, "joke must be a single line"
     print(f"wrote {path}: {len(JOKE)} chars")
 
 if __name__ == "__main__":
